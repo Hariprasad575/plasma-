@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <title> My Webpage</title>
+  
+</head>
+<body>
+ 
+
+  <div class="row ">
+    <div class="col-md-3 mt-4"></div>
+    <div class="col-md-4 mt-4">
+      <div class="card">
+        <div class="card-body ">
+
+          <!-- Form submit to signin -->
+          <form method="post">
+            <!-- Username input -->
+            <div class="form-outline mt-4">
+              <input type="text" id="username" placeholder="username@example.com" name="username" class="form-control" required />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mt-4">
+              <input type="password" id="password" placeholder="Password" name="password" class="form-control" required />
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-outline mt-4">
+              <button id="signin" class="btn btn-primary btn-block mb-4">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mt-4">
+    
+      <div class="alert alert-info alert-dismissible fade show " role="alert">
+        <span> Login Successful</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="col-md-2 mt-4"></div>
+      
+  </div>
+ 
+</body>
+
+<script>
+  $(document).ready(function () {
+    $('#signin').on('click', function (event) {
+
+      var postData = {
+        'username': $('#username').val(),
+        'passw': $('#password').val(),
+      };
+      $.ajax({
+        type: "POST",
+        url: "/signin",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(postData),
+      })
+        .done(function (data) {
+        });
+      event.preventDefault();
+    });
+  });
+</script>
+<a href="../templates/home.html"></a>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>
